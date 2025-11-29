@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supreme Rolling Shutters</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Variables */
+        
+         :root {
+            --primary: #2c3e50;
+            --secondary: #e74c3c;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --gray: #95a5a6;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        /* Reset and Base Styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+            text-decoration: none;
+        }
+        
+        .logo img {
+            height: 56px;
+            width: auto;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .alt {
+            background-color: #f9f9f9;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--light);
+        }
+        
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ffda4e;
+        }
+        
+        h3 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--primary);
+        }
+        
+        h3:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #ffda4e;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        h4 {
+            margin-bottom: 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn.primary {
+            background-color: #ffda4e;
+            color: white;
+        }
+        
+        .btn.primary:hover {
+            background-color: #ffda4e;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .glass-box {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+        /* Header Styles */
+        
+        .site-header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            /* space between image and text */
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: 700;
+            white-space: nowrap;
+            /* keep on one line */
+        }
+        
+        .logo img {
+            height: 38px;
+            /* adjust image size */
+            width: auto;
+        }
+        
+        .logo span {
+            color: #ffda4e;
+            font-size: 1.4rem;
+        }
+        /* Mobile View */
+        
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 1.1rem;
+            }
+            .logo img {
+                height: 30px;
+            }
+            .logo span {
+                font-size: 1.1rem;
+                /* reduce span size only */
+            }
+        }
+        
+        .nav {
+            display: flex;
+        }
+        
+        .nav a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 25px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .nav a:hover:after {
+            width: 100%;
+        }
+        /* Hero Section */
+        
+        .home {
+            background: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)), url('home.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            filter: brightness(1.2);
+            color: white;
+            text-align: center;
+            padding: 180px 0 100px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .home h1 {
+            color: white;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .home p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        /* Media Grid */
+        
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .media-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .media-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .media-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .media-item span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+        }
+        /* Slideshow Container */
+        
+        .slideshow-container {
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 16 / 9;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border-radius: 8px;
+            background-color: #000;
+        }
+        /* Slides */
+        
+        .mySlides {
+            display: none;
+        }
+        /* First slide shown by default */
+        
+        .mySlides:first-child {
+            display: block;
+        }
+        /* Slide Images */
+        
+        .mySlides img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            background-color: #000;
+        }
+        /* Navigation Arrows */
+        
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            padding: 16px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px;
+            user-select: none;
+            background: rgba(0, 0, 0, 0.4);
+            transform: translateY(-50%);
+        }
+        
+        .next {
+            right: 0;
+        }
+        
+        .prev:hover,
+        .next:hover {
+            background: rgba(0, 0, 0, 0.75);
+        }
+        /* Caption Text */
+        
+        .text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 14px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.65);
+            color: #fff;
+            font-weight: 600;
+        }
+        /* Number Text */
+        
+        .numbertext {
+            position: absolute;
+            top: 0;
+            padding: 8px 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            font-size: 13px;
+        }
+        /* Dots */
+        
+        .dots-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .dot {
+            height: 14px;
+            width: 14px;
+            display: inline-block;
+            margin: 0 4px;
+            border-radius: 50%;
+            background: #bbb;
+            cursor: pointer;
+            transition: background .3s;
+        }
+        
+        .dot.active,
+        .dot:hover {
+            background: var(--primary);
+        }
+        /* Fade animation */
+        
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.3s;
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: .4
+            }
+            to {
+                opacity: 1
+            }
+        }
+        /* About Section */
+        
+        #about p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        /* Contact Section */
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .contact-info {
+            padding: 25px;
+            background: #fff;
+            border-radius: 10px;
+        }
+        
+        .contact-map {
+            padding: 0;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .info-block {
+            margin-bottom: 20px;
+        }
+        
+        .info-block h4 {
+            margin-bottom: 5px;
+        }
+        /* CUSTOMER SECTION */
+        
+        .customer-section {
+            padding: 60px 20px;
+        }
+        
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            align-items: stretch;
+        }
+        
+        .customer-card {
+            background: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s ease;
+        }
+        
+        .customer-card:hover {
+            transform: translateY(-6px);
+        }
+        
+        .customer-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .customer-content {
+            padding: 25px 25px 30px;
+            text-align: center;
+        }
+        
+        .customer-content h3 {
+            font-size: 1.35rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+            color: #222;
+        }
+        
+        .customer-content p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.5;
+            margin-top: 6px;
+        }
+        
+        .customer-content a {
+            color: #ff6600;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .customer-content a:hover {
+            text-decoration: underline;
+        }
+        /* Testimonial Section */
+        
+        .testimonial-section {
+            background: var(--light);
+            padding: 80px 0;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '" ';
+            font-size: 5rem;
+            color: var(--light);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        /* Center section */
+        
+        .section {
+            display: flex;
+            justify-content: center;
+            padding: 60px 20px;
+        }
+        /* Glass blur card */
+        
+        .about-card {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(5px);
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            margin: 0 auto;
+            gap: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        /* About list styling */
+        
+        .about-list {
+            list-style: none;
+            padding: 0;
+            color: #2c3e50;
+        }
+        
+        .about-list li {
+            margin-bottom: 12px;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        /* CONTACT INFO TEXT STYLING */
+        
+        .contact-info {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 15px;
+            color: #222;
+            font-weight: 700;
+        }
+        
+        .contact-info .info-block {
+            margin-bottom: 20px;
+        }
+        
+        .contact-info h4 {
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 600;
+        }
+        
+        .contact-info p {
+            margin: 0;
+            margin-top: 8px;
+            color: #000;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        /* Social Icons */
+        
+        .social-icons {
+            margin-top: 15px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        
+        .social-icons a {
+            font-size: 26px;
+            text-decoration: none;
+            transition: 0.3s ease;
+        }
+        
+        .social-icons .whatsapp {
+            color: #030303;
+        }
+        
+        .social-icons .whatsapp:hover {
+            color: #0c0c0c;
+        }
+        
+        .social-icons .facebook {
+            color: #0a0a0a;
+        }
+        
+        .social-icons .facebook:hover {
+            color: #1a1a1a;
+        }
+        
+        .phone-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .phone-link:hover {
+            color: #000000;
+            text-decoration: underline;
+        }
+        
+        .tagline {
+            color: white;
+            font-family: "Segoe Script", cursive;
+            font-size: 22px;
+        }
+        /* ========================= */
+        /* MOBILE FOOTER NAVIGATION  */
+        /* ========================= */
+        
+        .mobile-footer-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        .mobile-footer-nav .nav-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        
+        .mobile-footer-nav a {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px;
+            text-decoration: none;
+            color: var(--gray);
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        .mobile-footer-nav a.active {
+            color: #e74c3c;
+        }
+        
+        .mobile-footer-nav a.active i {
+            color: #e74c3c;
+        }
+        
+        .mobile-footer-nav i {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        /* ========================= */
+        /* MAIN SITE FOOTER          */
+        /* ========================= */
+        
+        .site-footer {
+            background: #1e1e1e;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px 10px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .site-footer .developer {
+            margin-top: 6px;
+            font-size: 13px;
+        }
+        
+        .site-footer a {
+            color: #f1c73b;
+            text-decoration: none;
+            margin: 0 3px;
+        }
+        
+        .site-footer a:hover {
+            text-decoration: underline;
+        }
+        /* -=-=- GLOBAL RESPONSIVE FIXES -=-=- */
+        /* =======================================================
+           DEFAULT: DESKTOP + TABLET (Header visible, Footer hidden)
+        ======================================================= */
+        
+        .header-nav {
+            display: flex;
+            /* show header menu */
+        }
+        
+        .mobile-footer-nav {
+            display: none;
+            /* hide footer nav */
+        }
+        /* =======================================================
+           MOBILE SCREEN (Header hidden, Footer visible)
+        ======================================================= */
+        
+        @media (max-width: 768px) {
+            /* Hide header menu */
+            .header-nav {
+                display: none;
+            }
+            /* Show footer mobile nav */
+            .mobile-footer-nav {
+                display: flex;
+            }
+            /* Adjust body padding for mobile footer */
+            body {
+                padding-bottom: calc(70px + env(safe-area-inset-bottom));
+            }
+            /* Adjust header height on mobile */
+            .site-header {
+                height: 60px;
+            }
+            .header-inner {
+                padding: 10px 0;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.6rem;
+            }
+            .home {
+                padding: 120px 0 60px;
+                min-height: calc(100vh - 60px);
+            }
+            .media-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-map iframe {
+                min-height: 300px;
+            }
+            .slideshow-container {
+                max-width: 100%;
+            }
+            .text,
+            .numbertext {
+                font-size: 12px;
+                padding: 8px;
+            }
+            .prev,
+            .next {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+        /* =======================================================
+           TABLET AND MEDIUM MOBILE
+        ======================================================= */
+        
+        @media (max-width: 600px) {
+            .logo img {
+                height: 40px;
+            }
+            .logo span {
+                font-size: 18px;
+                font-weight: 700;
+            }
+            .about-card {
+                padding: 25px 18px;
+                margin-left: 15px;
+                margin-right: 15px;
+            }
+        }
+        /* =======================================================
+           SMALL MOBILE (iPhone SE, 360px width)
+        ======================================================= */
+        
+        @media (max-width: 360px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1.3rem;
+            }
+            p {
+                font-size: 0.9rem;
+            }
+            .logo img {
+                height: 34px;
+            }
+            .logo span {
+                font-size: 16px;
+            }
+            .about-card {
+                padding: 20px 15px;
+            }
+            .customer-img {
+                height: 150px;
+            }
+            .customer-content {
+                padding: 16px;
+            }
+        }
+        /* =======================================================
+           ULTRA SMALL MOBILE (320px)
+        ======================================================= */
+        
+        @media (max-width: 320px) {
+            h1 {
+                font-size: 1.3rem;
+                line-height: 1.3;
+            }
+            h2 {
+                font-size: 1.2rem;
+            }
+            p {
+                font-size: 0.85rem;
+            }
+            .logo img {
+                height: 30px;
+            }
+            .logo span {
+                font-size: 15px;
+            }
+            .about-card {
+                padding: 18px 12px;
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+            .customer-img {
+                height: 140px;
+            }
+            .customer-content {
+                padding: 14px;
+            }
+        }
+        /* =======================================================
+           CUSTOMER GRID RESPONSIVE
+        ======================================================= */
+        
+        @media (max-width: 768px) {
+            .customer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .customer-img {
+                height: 150px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .customer-grid {
+                grid-template-columns: 1fr;
+                max-width: 320px;
+                margin: 0 auto;
+            }
+            .customer-card {
+                margin: 0 auto;
+                width: 100%;
+            }
+            .customer-img {
+                height: 140px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .customer-grid {
+                max-width: 300px;
+                margin: 0 auto;
+            }
+        }
+        /* Image fallback styles */
+        
+        .image-fallback {
+            width: 100%;
+            height: 100%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-weight: bold;
+        }
+        /* Map fallback */
+        
+        .map-fallback {
+            width: 100%;
+            height: 350px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#home" class="logo">
+                <img src="logo.jpg" alt="Supreme Logo" onerror="this.style.display='none'">
+                <span>Supreme</span> Rolling Shutters
+            </a>
+            <nav class="nav header-nav" id="nav">
+                <a href="#home">Home</a>
+                <a href="#products">Products</a>
+                <a href="#our-work">Our Work</a>
+                <a href="#customer">Customers</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="home section">
+        <div class="container">
+            <h1 style="color:#ffda4e;">Since 2004</h1>
+            <h2>100,000+ shutters installed across South India</h2>
+            <p>High-quality, and affordable rolling shutters for every need.</p>
+            <a href="#products" class="btn primary" style="color:#2c3e50;">Explore Now</a>
+        </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products" class="section">
+        <div class="container">
+            <h3>Our Products</h3>
+            <div class="media-grid">
+                <div class="media-item">
+                    <img src="Door Roll up Shutter.jpg" alt="Steel Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Door Roll up Shutter</div>
+                    <span>Door Roll up Shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="gear.jpg" alt="Grill Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Gear shutter</div>
+                    <span>Gear shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="Motorized.jpg" alt="PVC Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Motorized Shutter</div>
+                    <span>Motorized Shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="fall.jpg" alt="Grill Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Fall flat Shutter</div>
+                    <span>Fall flat Shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="half.jpg" alt="PVC Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Half Flat Shutter</div>
+                    <span>Half Flat Shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="Warehouse.png" alt="Steel Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">industriesShutter</div>
+                    <span>industries Shutter</span>
+                </div>
+                <div class="media-item">
+                    <img src="gi mater.jpg" alt="Grill Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Gi material in all deasigns</div>
+                    <span>Gi material in all deasigns</span>
+                </div>
+                <div class="media-item">
+                    <img src="gi colour.jpg" alt="PVC Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Gi colour coated in all designs</div>
+                    <span>Gi colour coated</span>
+                </div>
+                <div class="media-item">
+                    <img src="poly (1).jpg" alt="Grill Rolling Shutter" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">polycarbonate Shutter</div>
+                    <span>polycarbonate Shutter</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OUR WORK / SLIDESHOW SECTION -->
+    <section id="our-work" class="section alt">
+        <div class="container">
+            <h3>Our Work</h3>
+
+            <div class="slideshow-container">
+
+                <!-- Repeat 15 images -->
+                <div class="mySlides fade"><img src="1.jpg"></div>
+                <div class="mySlides fade"><img src="2.jpg"></div>
+                <div class="mySlides fade"><img src="3.jpg"></div>
+
+                <div class="mySlides fade"><img src="4.jpg"></div>
+                <div class="mySlides fade"><img src="5.jpg"></div>
+                <div class="mySlides fade"><img src="6.jpg"></div>
+
+                <div class="mySlides fade"><img src="7.jpg"></div>
+                <div class="mySlides fade"><img src="8.jpg"></div>
+                <div class="mySlides fade"><img src="9.jpg"></div>
+
+                <div class="mySlides fade"><img src="10.jpg"></div>
+                <div class="mySlides fade"><img src="11.jpg"></div>
+                <div class="mySlides fade"><img src="12.jpg"></div>
+
+                <div class="mySlides fade"><img src="13.jpg"></div>
+                <div class="mySlides fade"><img src="14.jpg"></div>
+                <div class="mySlides fade"><img src="15.jpg"></div>
+
+                <a class="prev" onclick="plusSlides(-3)">&#10094;</a>
+                <a class="next" onclick="plusSlides(3)">&#10095;</a>
+            </div>
+
+            <div class="dots-container" style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+                <span class="dot" onclick="currentSlide(10)"></span>
+                <span class="dot" onclick="currentSlide(13)"></span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CUSTOMER SECTION -->
+    <section id="customer" class="customer-section">
+        <div class="container">
+            <h3>Our Valued Customers</h3>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px; color: #2c3e50;">
+                We take pride in serving a diverse range of clients across various industries. Here are some of our satisfied customers.
+            </p>
+            <div class="customer-grid">
+                <div class="customer-card">
+                    <img src="Complex.png" alt="Commercial Building" class="customer-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Commercial Complex</div>
+                    <div class="customer-content">
+                        <h3>Commercial Complex</h3>
+                        <p>Installed automatic rolling shutters for enhanced security</p>
+                    </div>
+                </div>
+                <div class="customer-card">
+                    <img src="Warehouse.png" alt="Industrial Facility" class="customer-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Industrial Warehouse</div>
+                    <div class="customer-content">
+                        <h3>Industrial Warehouse</h3>
+                        <p>Custom industrial shutters for large entry points</p>
+                    </div>
+                </div>
+                <div class="customer-card">
+                    <img src="Apartments.jpg" alt=" Residential Property " class="customer-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    <div class="image-fallback" style="display:none;">Residential Apartments</div>
+                    <div class="customer-content ">
+                        <h3>Residential Apartments</h3>
+                        <p>PVC rolling shutters for garage and window security</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
+    <section class="testimonial-section ">
+        <div class="container ">
+            <h3>What Our Customers Say</h3>
+            <div class="testimonial-grid ">
+                <div class="testimonial-card ">
+                    <div class="testimonial-text ">
+                        Supreme Rolling Shutters provided excellent service from consultation to installation. Their products are durable and the team was professional throughout the process.
+                    </div>
+                    <div class="testimonial-author ">
+                        <img src="boy.png " alt="Customer " class="author-img" onerror="this.style.display='none'">
+                        <div class="author-info ">
+                            <h4>Rajesh Kumar</h4>
+                            <p>Commercial Property Owner</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card ">
+                    <div class="testimonial-text ">
+                        We needed industrial shutters for our warehouse and Supreme delivered beyond our expectations. The quality is exceptional and the pricing was competitive.
+                    </div>
+                    <div class="testimonial-author ">
+                        <img src="woman.png " alt="Customer " class="author-img" onerror="this.style.display='none'">
+                        <div class="author-info ">
+                            <h4>Priya Sharma</h4>
+                            <p>Logistics Manager</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card ">
+                    <div class="testimonial-text ">
+                        The automatic rolling shutters installed in our apartment complex have been working flawlessly. Great security solution with modern convenience.
+                    </div>
+                    <div class="testimonial-author ">
+                        <img src="man.png " alt="Customer " class="author-img" onerror="this.style.display='none'">
+                        <div class="author-info ">
+                            <h4>Anil Patel</h4>
+                            <p>Residential Society President</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section ">
+        <div class="about-card ">
+            <h3>About Us</h3>
+            <ul class="about-list ">
+                <li><b>Established in 2004</b> with strong industry experience.</li>
+                <li>Specialize in <b>manufacturing and installing rolling shutters</b> for shops, homes, and industries.</li>
+                <li>Use <b>premium GI and polycarbonate materials</b> for long-lasting performance.</li>
+                <li>Offer a <b>wide range of shutter types</b>: Push Pull, Gear, Motorized, Round, Full Flat, Half Flat, and Perforated.</li>
+                <li>Provide <b>smooth operation, durability, and low maintenance</b> in every design.</li>
+                <li>Successfully <b>installed more than 1,00,000 shutters</b> across South India.</li>
+                <li>Deliver services to <b>Tamil Nadu, Kerala, Karnataka, Pondicherry, and Andhra Pradesh.</b></li>
+                <li>Focus on <b>high quality, fast delivery, and customer satisfaction.</b></li>
+                <li>Build <b>long-term customer relationships</b> through reliable service and fair pricing.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section alt ">
+        <div class="container contact-container ">
+            <h3>Contact Us</h3>
+            <div class="contact-grid ">
+                <!-- LEFT SIDE — Our Information -->
+                <div class="contact-info glass-box ">
+                    <h3>Our Information</h3>
+                    <!-- Office Address -->
+                    <div class="info-block ">
+                        <h4>Office Address :</h4>
+                        <p> Alagai Nagar, Rajapalayam, Tamil Nadu 626108, India</p>
+                    </div>
+                    <!-- Branches -->
+                    <div class="info-block ">
+                        <h4>Our Branches :</h4>
+                        <p>Madurai</p>
+                        <p>Rajapalayam</p>
+                        <p>Bangalore</p>
+                    </div>
+                    <!-- Phone -->
+                    <div class="info-block ">
+                        <h4>Call Us :</h4>
+                        <p><a href="tel:+919894861777 " class="phone-link ">+91-9894861777</a></p>
+                        <p><a href="tel:+919486321681 " class="phone-link ">+91-9486321681</a></p>
+                        <p><a href="tel:+919894510024 " class="phone-link ">+91-9894510024</a></p>
+                    </div>
+                    <!-- Timing -->
+                    <div class="info-block ">
+                        <h4>Our Timing :</h4>
+                        <p>Open from 9:00 AM to 9:00 PM, all days of the week</p>
+                    </div>
+                    <!-- Social Icons -->
+                    <div class="social-icons ">
+                        <a href="https://wa.me/919894861777 " target="_blank " class="whatsapp ">
+                            <i class="fab fa-whatsapp "></i>
+                        </a>
+                        <a href="https://www.facebook.com/share/1NGQ3iYXRC/?mibextid=wwXIfr " target="_blank " class="facebook ">
+                            <i class="fab fa-facebook "></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- RIGHT SIDE — Google Map -->
+                <div class="contact-map glass-box ">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.750574168777!2d77.5621329!3d9.4387648!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06e82a9848b505%3A0xff4bafad86abc42e!2sSUPREME%20ROLLING%20SHUTTERS!5e0!3m2!1sen!2sin!4v1700000000000 "
+                        width="100% " height="100% " style="border:0; " allowfullscreen=" " loading="lazy " referrerpolicy="no-referrer-when-downgrade " onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                    </iframe>
+                    <div class="map-fallback" style="display:none;">
+                        <h3>Location Map</h3>
+                        <p>Supreme Rolling Shutters</p>
+                        <p>Alagai Nagar, Rajapalayam</p>
+                        <p>Tamil Nadu 626108, India</p>
+                        <p><small>Map unavailable - check your internet connection</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="mobile-footer-nav">
+        <div class="nav-container">
+            <a href="#home" class="active">
+                <i class="fas fa-home"></i><span>Home</span>
+            </a>
+            <a href="#products">
+                <i class="fas fa-box-open"></i><span>Products</span>
+            </a>
+            <a href="#our-work">
+                <i class="fas fa-briefcase"></i><span>Work</span>
+            </a>
+            <a href="#customer">
+                <i class="fas fa-users"></i><span>Customers</span>
+            </a>
+            <a href="#about">
+                <i class="fas fa-info-circle"></i><span>About</span>
+            </a>
+            <a href="#contact">
+                <i class="fas fa-envelope"></i><span>Contact</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer ">
+        <p>© <span id="year">2024</span> Supreme Rolling Shutters — All Rights Reserved.</p>
+
+        <div class="developer ">
+            <span>Developed by Mohammed Irfan K</span>
+            <a href="https://www.instagram.com/irfanvortexx/" target="_blank ">Instagram</a> |
+            <a href="tel:+916382043993 ">Phone: 6382043993</a> |
+            <a href="https://wa.me/916382043993" target="_blank ">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 1. Update footer year ---
+            const yearElement = document.getElementById("year");
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+
+            // --- 2. Mobile footer navigation active state ---
+            const mobileLinks = document.querySelectorAll('.mobile-footer-nav a');
+            const sections = document.querySelectorAll('section');
+
+            function updateActiveNavLink() {
+                let current = '';
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.offsetHeight;
+
+                    if (window.pageYOffset >= sectionTop &&
+                        window.pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                mobileLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', updateActiveNavLink);
+            window.addEventListener('load', updateActiveNavLink);
+            updateActiveNavLink(); // Initial check
+
+            // --- 3. Slideshow functionality ---
+            let slideIndex = 1;
+            let slideInterval;
+
+            const slides = document.getElementsByClassName("mySlides");
+            const dots = document.getElementsByClassName("dot");
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            function showSlides(n) {
+                if (slides.length === 0) return;
+
+                if (n > slides.length) slideIndex = 1;
+                if (n < 1) slideIndex = slides.length;
+
+                // Hide all slides
+                for (let i = 0; i < slides.length; i++) {
+                    slides[i].style.display = "none";
+                }
+
+                // Remove active class from dots
+                for (let i = 0; i < dots.length; i++) {
+                    dots[i].classList.remove("active");
+                }
+
+                // Show current slide and activate dot
+                slides[slideIndex - 1].style.display = "block";
+                if (dots[slideIndex - 1]) {
+                    dots[slideIndex - 1].classList.add("active");
+                }
+            }
+
+            function plusSlides(n) {
+                clearInterval(slideInterval);
+                showSlides(slideIndex += n);
+                startAutoSlide();
+            }
+
+            function currentSlide(n) {
+                clearInterval(slideInterval);
+                showSlides(slideIndex = n);
+                startAutoSlide();
+            }
+
+            function startAutoSlide() {
+                slideInterval = setInterval(() => {
+                    plusSlides(1);
+                }, 5000);
+            }
+
+            // Initialize slideshow
+            showSlides(slideIndex);
+            startAutoSlide();
+
+            // Event listeners for controls
+            if (prevBtn) prevBtn.addEventListener('click', () => plusSlides(-1));
+            if (nextBtn) nextBtn.addEventListener('click', () => plusSlides(1));
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].addEventListener('click', () => currentSlide(i + 1));
+            }
+        });
+    </script>
+</body>
+
+</html>
