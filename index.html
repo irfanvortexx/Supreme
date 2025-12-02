@@ -95,8 +95,6 @@
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
-            height: 3px;
-            background: #ffda4e;
         }
         
         h3 {
@@ -702,6 +700,84 @@
             font-family: "Segoe Script", cursive;
             font-size: 22px;
         }
+        /* Modal Styles */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+        }
+        
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 25px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #666;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .modal h3 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ffda4e;
+        }
+        
+        .btn-primary {
+            background-color: #ffda4e;
+            color: white;
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-primary:hover {
+            background-color: #ffd12e;
+        }
         /* ========================= */
         /* MOBILE FOOTER NAVIGATION  */
         /* ========================= */
@@ -845,6 +921,12 @@
                 padding: 10px;
                 font-size: 16px;
             }
+            /* Modal responsive */
+            .modal-content {
+                margin: 20% auto;
+                width: 85%;
+                padding: 20px;
+            }
         }
         /* =======================================================
            TABLET AND MEDIUM MOBILE
@@ -974,7 +1056,26 @@
             font-weight: bold;
         }
         /* Map fallback */
-        
+        .btn.primary {
+            color: #000 !important;
+        }
+        .social-links {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            font-size: 28px;
+            transition: 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ffda4e;
+        }
+
         .map-fallback {
             width: 100%;
             height: 350px;
@@ -987,6 +1088,45 @@
             text-align: center;
             padding: 20px;
         }
+        #home h2 {
+    margin-bottom: 8px; /* adjust gap between headings */
+}
+
+#home p {
+    margin-top: 10px;   /* gap above paragraph */
+    margin-bottom: 20px;
+}
+
+#home .btn.primary {
+    margin-top: 13px;   /* gap above button */
+}
+.floating-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #25D366;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  bottom: 120px;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  z-index: 999999;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.floating-whatsapp img {
+  width: 32px;
+  height: 32px;
+}
+
+.floating-whatsapp:hover {
+  transform: scale(1.1);
+}
+
     </style>
 </head>
 
@@ -1011,13 +1151,39 @@
 
     <!-- Hero Section -->
     <section id="home" class="home section">
-        <div class="container">
-            <h1 style="color:#ffda4e;">Since 2004</h1>
-            <h2>100,000+ shutters installed across South India</h2>
-            <p>High-quality, and affordable rolling shutters for every need.</p>
-            <a href="#products" class="btn primary" style="color:#2c3e50;">Explore Now</a>
-        </div>
+<div class="container">
+    <h2 style="color:#ffda4e;">Since 2004</h2>
+    <h2>100,000+ shutters installed across South India</h2>
+    <p>High-quality, and affordable rolling shutters for every need.</p>
+
+    <button class="btn primary" onclick="document.getElementById('quoteModal').style.display='block'">
+        Get a Quote
+    </button>
+
+    <!-- Social Icons -->
+    <div class="social-links">
+        <a href="https://www.instagram.com/supreme_rolling_shutters_?igsh=anVyZHQxbXdpNG50&utm_source=qr" target="_blank">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+
+        <a href="https://www.facebook.com/share/1NGQ3iYXRC/?mibextid=wwXIfr" target="_blank">
+            <i class="fa-brands fa-facebook"></i>
+        </a>
+
+        <a href="tel:+919894861777" target="_blank">
+            <i class="fa-solid fa-phone"></i>
+        </a>
+    </div>
+</div>
+
     </section>
+<a href="https://wa.me/919894861777?text=Hi,%20I%20need%20a%20quote%20for%20rolling%20shutters."
+   class="floating-whatsapp"
+   target="_blank"
+   aria-label="WhatsApp Chat">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+         alt="WhatsApp" />
+</a>
 
     <!-- PRODUCTS SECTION -->
     <section id="products" class="section">
@@ -1274,6 +1440,28 @@
         </div>
     </section>
 
+    <!-- Quote Modal -->
+    <div id="quoteModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('quoteModal').style.display='none'">&times;</span>
+            <h3>Get a Quote</h3>
+            <form onsubmit="sendWhatsAppMessage(); return false;">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="phonenumber" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group">
+                    <textarea id="requirements" placeholder="Your Requirements" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary" style="color: #000;">Send via WhatsApp</button>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Mobile Footer Navigation -->
     <div class="mobile-footer-nav">
         <div class="nav-container">
             <a href="#home" class="active">
@@ -1310,6 +1498,35 @@
     </footer>
 
     <script>
+        // Global function for WhatsApp message
+        function sendWhatsAppMessage() {
+            const name = document.getElementById('name').value.trim();
+            const phonenumber = document.getElementById('phonenumber').value.trim();
+            const requirements = document.getElementById('requirements').value.trim();
+            const phone = "919894861777";
+            const now = new Date().toLocaleString();
+
+            // Validate inputs
+            if (!name || !phonenumber || !requirements) {
+                alert('Please fill in all fields');
+                return false;
+            }
+
+            const message = `📩 Supreme Rolling Shutters Quote Request\n\nName: ${name}\nPhone: ${phonenumber}\nRequirements: ${requirements}\n\nThank you for reaching out.\nOur team will contact you soon.\n🕒 Sent on: ${now}`;
+
+            const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+
+            window.open(url, '_blank');
+            document.getElementById('quoteModal').style.display = 'none';
+
+            // Clear form
+            document.getElementById('name').value = '';
+            document.getElementById('phonenumber').value = '';
+            document.getElementById('requirements').value = '';
+
+            return false; // Prevent form submission
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             // --- 1. Update footer year ---
             const yearElement = document.getElementById("year");
@@ -1346,7 +1563,25 @@
             window.addEventListener('load', updateActiveNavLink);
             updateActiveNavLink(); // Initial check
 
-            // --- 3. Slideshow functionality ---
+            // --- 3. Modal functionality ---
+            const quoteModal = document.getElementById('quoteModal');
+            const closeModal = document.querySelector('.close');
+
+            // Close modal when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target === quoteModal) {
+                    quoteModal.style.display = 'none';
+                }
+            });
+
+            // Close with escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape' && quoteModal.style.display === 'block') {
+                    quoteModal.style.display = 'none';
+                }
+            });
+
+            // --- 4. Slideshow functionality ---
             let slideIndex = 1;
             let slideInterval;
 
